@@ -100,4 +100,8 @@ public class TokenProvider {
         UserDetails userDetails = memberDetailsService.loadUserByUsername(email);
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
+
+    public ZonedDateTime getExpiredAtToken(String token, String secret) {
+        return ZonedDateTime.now().plusSeconds(ACCESS_TOKEN_EXPIRE_TIME);
+    }
 }
