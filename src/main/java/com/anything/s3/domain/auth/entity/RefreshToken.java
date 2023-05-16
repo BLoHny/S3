@@ -18,12 +18,12 @@ public class RefreshToken {
     private String email;
 
     @Id
-    private String token;
+    private String refreshToken;
 
     @TimeToLive
     private Long expiredAt;
 
-    public void exchangeRefreshToken(String token) {
-        this.token = token;
+    public void exchangeRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
