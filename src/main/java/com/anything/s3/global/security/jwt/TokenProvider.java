@@ -76,7 +76,7 @@ public class TokenProvider {
         }
     }
 
-    public ZonedDateTime getExpiredAtToken(String token, String secret) {
+    public ZonedDateTime getExpiredAtToken() {
         return ZonedDateTime.now().plusSeconds(ACCESS_TOKEN_EXPIRE_TIME);
     }
 
