@@ -18,7 +18,7 @@ public class Member {
     @Id
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "username")
     private String name;
 
     @Column(nullable = false)
