@@ -23,16 +23,16 @@ spring:
           starttls:
             enable: true
 
-  redis:
-    host: 127.0.0.1
-    port: 6379
-
   jpa:
     hibernate:
       ddl-auto: update
 
   main:
     allow-bean-definition-overriding: 'true'
+  data:
+    redis:
+      host: ${R_HOST}
+      port: ${R_PORT}
 
 jwt:
   accessSecret: ${ACCESS_SECRET}
@@ -51,4 +51,4 @@ cloud:
       auto: false
 
 server:
-  port: '9010'
+  port: '9040'
