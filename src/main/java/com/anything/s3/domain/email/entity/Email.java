@@ -21,7 +21,9 @@ public class Email {
 
     @Length(max = 4)
     private String randomValue;
+
     private Boolean authentication;
+
     @ColumnDefault("1")
     private Integer attemptCount;
 

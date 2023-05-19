@@ -11,7 +11,7 @@ public class EmailUtil {
 
     private final EmailRepository emailRepository;
 
-    public Email getEmailEntityById(String email) {
+    public Email getEmail(String email) {
         return emailRepository.findById(email)
                 .orElseThrow(() -> new RuntimeException("유효 하지 않은 이메일"));
     }

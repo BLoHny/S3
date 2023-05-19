@@ -27,6 +27,5 @@ public class Article {
     private DateTime createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "username")
     private Member member;
 }

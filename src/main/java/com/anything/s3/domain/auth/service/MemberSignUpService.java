@@ -23,7 +23,7 @@ public class MemberSignUpService {
              throw new DuplicatedEmailException();
          }
 
-         Email emailAuth = emailUtil.getEmailEntityById(request.getEmail());
+         Email emailAuth = emailUtil.getEmail(request.getEmail());
 
          emailUtil.checkEmailAuthentication(emailAuth);
 
