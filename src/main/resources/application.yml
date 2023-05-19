@@ -51,4 +51,4 @@ cloud:
       auto: false
 
 server:
-  port: '9040'
+  port: '9020'
