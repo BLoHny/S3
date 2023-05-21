@@ -20,6 +20,7 @@ public class Member {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
