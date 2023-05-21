@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class CreateArticleService {
@@ -27,7 +29,7 @@ public class CreateArticleService {
         Article article = Article.builder()
                 .title(articleRequest.getTitle())
                 .content(articleRequest.getContent())
-                .createDate(DateTime.now())
+                .createdDate(LocalDateTime.now())
                 .member(member)
                 .build();
 

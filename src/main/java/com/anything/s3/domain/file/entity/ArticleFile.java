@@ -20,6 +20,7 @@ public class ArticleFile {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "article_id")
     private Article article;
 
     @Column(name = "article_file_url")

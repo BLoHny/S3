@@ -1,11 +1,12 @@
 package com.anything.s3.domain.article.entity;
 
 import com.anything.s3.domain.member.entity.Member;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.sql.results.graph.Fetch;
-import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Builder
@@ -18,14 +19,24 @@ public class Article {
     @Column(name = "article_id", nullable = false)
     private Long id;
 
-    @Column(length = 20, unique = true)
+    @Column(length = 20, unique = true, nullable = false)
     private String title;
 
-    @Column(length = 500)
+    @Column(nullable = false)
     private String content;
 
-    private DateTime createDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private Member member;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime editedDate;
+
+//    public void update(EditBoardRequest editBoardRequest) {
+//        this.title = editBoardRequest.getTitle();
+//        this.content = editBoardRequest.getContent();
+//    }
 }
