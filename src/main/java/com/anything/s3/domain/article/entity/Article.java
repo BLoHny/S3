@@ -25,6 +25,9 @@ public class Article {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Member member;
