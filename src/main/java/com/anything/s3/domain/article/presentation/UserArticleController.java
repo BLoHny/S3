@@ -3,6 +3,7 @@ package com.anything.s3.domain.article.presentation;
 import com.anything.s3.domain.article.presentation.request.CreateArticleRequest;
 import com.anything.s3.domain.article.presentation.response.ListArticleResponse;
 import com.anything.s3.domain.article.service.CreateArticleService;
+import com.anything.s3.domain.article.service.DeleteArticleService;
 import com.anything.s3.domain.article.service.ListArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,10 @@ public class UserArticleController {
 
     private final ListArticleService listArticleService;
 
+    private final DeleteArticleService deleteArticleService;
+
     @PostMapping
-    public ResponseEntity<?> createArticle(@RequestBody @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
+    public ResponseEntity<?> createArticle(@RequestPart(value = "data") @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
         createArticleService.execute(articleRequest, files);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -32,5 +35,11 @@ public class UserArticleController {
     public ResponseEntity<ListArticleResponse> boardList() {
         var list = listArticleService.execute();
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteArticle(@PathVariable Long id) {
+        deleteArticleService.execute(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
