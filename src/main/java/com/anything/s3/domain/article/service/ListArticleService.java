@@ -5,13 +5,13 @@ import com.anything.s3.domain.article.presentation.response.ArticleResponse;
 import com.anything.s3.domain.article.presentation.response.ListArticleResponse;
 import com.anything.s3.domain.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.anything.s3.domain.article.presentation.response.ArticleResponse.articleResponse;
-
 @RequiredArgsConstructor
+@Service
 public class ListArticleService {
 
     private final ArticleRepository articleRepository;
