@@ -1,5 +1,6 @@
 package com.anything.s3.domain.article.entity;
 
+import com.anything.s3.domain.article.presentation.request.EditArticleRequest;
 import com.anything.s3.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,6 +38,11 @@ public class Article {
 
     @LastModifiedDate
     private LocalDateTime editedDate;
+
+    public void update(EditArticleRequest editArticleRequest) {
+        this.title = editArticleRequest.getTitle();
+        this.content = editArticleRequest.getContent();
+    }
 
 //    public void update(EditBoardRequest editBoardRequest) {
 //        this.title = editBoardRequest.getTitle();
