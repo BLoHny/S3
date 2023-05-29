@@ -1,9 +1,11 @@
 package com.anything.s3.domain.article.presentation;
 
 import com.anything.s3.domain.article.presentation.request.CreateArticleRequest;
+import com.anything.s3.domain.article.presentation.request.EditArticleRequest;
 import com.anything.s3.domain.article.presentation.response.ListArticleResponse;
 import com.anything.s3.domain.article.service.CreateArticleService;
 import com.anything.s3.domain.article.service.DeleteArticleService;
+import com.anything.s3.domain.article.service.EditArticleService;
 import com.anything.s3.domain.article.service.ListArticleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,8 @@ public class UserArticleController {
 
     private final DeleteArticleService deleteArticleService;
 
+    private final EditArticleService editArticleService;
+
     @PostMapping
     public ResponseEntity<?> createArticle(@RequestPart(value = "data") @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
         createArticleService.execute(articleRequest, files);
@@ -41,5 +45,11 @@ public class UserArticleController {
     public ResponseEntity<?> deleteArticle(@PathVariable Long id) {
         deleteArticleService.execute(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody @Valid EditArticleRequest editArticleRequest) {
+        editArticleService.execute(id, editArticleRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
