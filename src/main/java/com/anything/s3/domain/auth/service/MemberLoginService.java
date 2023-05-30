@@ -1,6 +1,8 @@
 package com.anything.s3.domain.auth.service;
 
 import com.anything.s3.domain.auth.entity.RefreshToken;
+import com.anything.s3.domain.auth.exception.DuplicatedEmailException;
+import com.anything.s3.domain.auth.exception.MisMatchPasswordException;
 import com.anything.s3.domain.auth.presentation.dto.request.SignInRequest;
 import com.anything.s3.domain.auth.presentation.dto.response.SignInResponse;
 import com.anything.s3.domain.auth.repository.RefreshTokenRepository;
@@ -25,10 +27,10 @@ public class MemberLoginService {
     public SignInResponse execute(SignInRequest request) {
 
         Member member = memberRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("이메일이 없음"));
+                .orElseThrow(DuplicatedEmailException::new);
 
         if(!passwordEncoder.matches(request.getPassword(), member.getPassword())) {
-            throw new RuntimeException("패스워드가 일치하지 않음");
+            throw new MisMatchPasswordException();
         }
 
         String accessToken = tokenProvider.generatedAccessToken(request.getEmail());
