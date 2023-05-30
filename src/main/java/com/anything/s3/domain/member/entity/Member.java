@@ -32,4 +32,8 @@ public class Member {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
 }
