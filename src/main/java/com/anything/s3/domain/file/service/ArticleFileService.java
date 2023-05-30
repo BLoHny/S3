@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.anything.s3.domain.file.exception.FileUploadFailedException;
 import com.anything.s3.domain.file.exception.InvalidFormatFileException;
 import com.anything.s3.domain.file.exception.NotAllowedFileException;
+import com.anything.s3.global.annotation.RollbackService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-@Service
+@RollbackService
 @RequiredArgsConstructor
 public class ArticleFileService {
 

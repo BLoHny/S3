@@ -3,18 +3,18 @@ package com.anything.s3.domain.email.service;
 import com.anything.s3.domain.email.entity.Email;
 import com.anything.s3.domain.email.presentation.dto.EmailSendRequest;
 import com.anything.s3.domain.email.repository.EmailRepository;
+import com.anything.s3.global.annotation.RollbackService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Random;
 
-@Service
+@RollbackService
 @RequiredArgsConstructor
 public class EmailService {
 

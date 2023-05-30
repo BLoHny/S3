@@ -7,14 +7,14 @@ import com.anything.s3.domain.file.entity.ArticleFile;
 import com.anything.s3.domain.file.repository.ArticleFileRepository;
 import com.anything.s3.domain.file.service.ArticleFileService;
 import com.anything.s3.domain.member.entity.Member;
+import com.anything.s3.global.annotation.RollbackService;
 import com.anything.s3.global.util.ArticleUtil;
 import com.anything.s3.global.util.UserUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@RollbackService
 @RequiredArgsConstructor
 public class DeleteArticleService {
 

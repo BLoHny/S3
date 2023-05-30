@@ -4,11 +4,11 @@ import com.anything.s3.domain.article.entity.Article;
 import com.anything.s3.domain.article.exception.ExistTitleException;
 import com.anything.s3.domain.article.presentation.request.EditArticleRequest;
 import com.anything.s3.domain.article.repository.ArticleRepository;
+import com.anything.s3.global.annotation.RollbackService;
 import com.anything.s3.global.util.ArticleUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
+@RollbackService
 @RequiredArgsConstructor
 public class EditArticleService {
 

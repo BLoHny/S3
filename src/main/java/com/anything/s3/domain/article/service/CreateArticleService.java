@@ -8,16 +8,16 @@ import com.anything.s3.domain.file.entity.ArticleFile;
 import com.anything.s3.domain.file.repository.ArticleFileRepository;
 import com.anything.s3.domain.file.service.ArticleFileService;
 import com.anything.s3.domain.member.entity.Member;
+import com.anything.s3.global.annotation.RollbackService;
 import com.anything.s3.global.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
+@RollbackService
 @RequiredArgsConstructor
 public class CreateArticleService {
 
