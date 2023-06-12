@@ -30,7 +30,7 @@ public class UserArticleController {
     private final EditArticleService editArticleService;
 
     @PostMapping
-    public ResponseEntity<?> createArticle(@RequestPart(value = "data") @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
+    public ResponseEntity<?> createArticle(@RequestPart("data") @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
         createArticleService.execute(articleRequest, files);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
