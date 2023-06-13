@@ -2,11 +2,9 @@ package com.anything.s3.domain.article.presentation;
 
 import com.anything.s3.domain.article.presentation.request.CreateArticleRequest;
 import com.anything.s3.domain.article.presentation.request.EditArticleRequest;
+import com.anything.s3.domain.article.presentation.response.ArticleDetailResponse;
 import com.anything.s3.domain.article.presentation.response.ListArticleResponse;
-import com.anything.s3.domain.article.service.CreateArticleService;
-import com.anything.s3.domain.article.service.DeleteArticleService;
-import com.anything.s3.domain.article.service.EditArticleService;
-import com.anything.s3.domain.article.service.ListArticleService;
+import com.anything.s3.domain.article.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,6 +26,8 @@ public class UserArticleController {
     private final DeleteArticleService deleteArticleService;
 
     private final EditArticleService editArticleService;
+
+    private final ArticleDetailService articleDetailService;
 
     @PostMapping
     public ResponseEntity<?> createArticle(@RequestPart("data") @Valid CreateArticleRequest articleRequest, @RequestPart("file") List<MultipartFile> files) {
@@ -51,5 +51,11 @@ public class UserArticleController {
     public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody @Valid EditArticleRequest editArticleRequest) {
         editArticleService.execute(id, editArticleRequest);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<ArticleDetailResponse> getDetail(@PathVariable Long id) {
+        ArticleDetailResponse detailResponse = articleDetailService.execute(id);
+        return new ResponseEntity<>(detailResponse, HttpStatus.OK);
     }
 }
