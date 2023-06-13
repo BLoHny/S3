@@ -30,7 +30,7 @@ public class ArticleFileService {
 
     private final AmazonS3 amazonS3;
 
-    private static final List<String> ALLOWED_MIME_TYPES = Arrays.asList("file/jpg", "file/png", "file/gif", "file/mp4");
+    private static final List<String> ALLOWED_MIME_TYPES = Arrays.asList("image/jpg", "image/png", "image/gif", "file/mp4");
 
     public List<String> uploadFile(List<MultipartFile> multipartFile) {
 
